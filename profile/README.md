@@ -14,7 +14,7 @@
 
 Fern is a natively compiled, highly versatile language intended to bring together metaprogramming, performance, and ease-of-use to a happy medium.
 
-Examples [exist](examples) but are small tidbits meant to facilitate parser testing, the language is not functional.
+Examples [exist](https://github.com/fern-pl/fnc/tree/main/examples) but are small tidbits meant to facilitate parser testing, the language is not functional.
 
 ## Notable Features
 
@@ -24,11 +24,11 @@ Examples [exist](examples) but are small tidbits meant to facilitate parser test
 2. [Symbol-First Casting and Conversion](spec/model.md#casts-and-conversions)
 3. [UFCS (Uniform Function Call Syntax)](spec/model.md#ufcs)
 4. [CTFE (Compile-Time Function Execution)](spec/model.md#ctfe)
-5. [Symbols and Aliases](spec/grammar.md#symbols-and-aliases)
-6. [Granular Attributes](spec/grammar.md#attributes)
-7. [Variable-Based Return](spec/grammar.md#functions)
-8. [Iota Operator](spec/grammar#operators)
-9. [Syntactic Sugar Tuples and Tags](spec/grammar#tuple)
+5. [Symbols and Aliases](https://fern-pl.github.io/specification/grammar#symbols-and-aliases)
+6. [Granular Attributes](https://fern-pl.github.io/specification/grammar#attributes)
+7. [Variable-Based Return](https://fern-pl.github.io/specification/grammar#functions)
+8. [Iota Operator](https://fern-pl.github.io/specification/grammar#operators)
+9. [Syntactic Sugar Tuples and Tags](https://fern-pl.github.io/specification/grammar#tuple)
 
 ## Specification
 
