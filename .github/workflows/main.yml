@@ -1,0 +1,27 @@
+name: Metrics
+on:
+  # Schedule updates (each hour)
+  schedule: [{cron: "0 * * * *"}]
+  # Lines below let you run workflow manually and on each commit
+  workflow_dispatch:
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Install deps
+      run: pip install requests
+      
+    - name: Run python script
+      run: python statsGen/genBadges.py
+      
+    - name: Login
+      run: git config --global user.name "actions-user" && git config --local user.email "actions@github.com" 
+
+    - name: Commit changes
+      run: git add . && git commit -am "Gen imgs at $(date)"
+
+    - name: Push changes
+      run: git push
+    
