@@ -18,7 +18,7 @@ Examples [exist](https://github.com/fern-pl/fnc/tree/main/examples) but are smal
 
 ## Notable Features
 
-1. [Hybrid Memory Management](spec/model.md#memory-management)
+1. [Hybrid Memory Management](https://fern-pl.github.io/specification/model#memory-management)
     - Linear Reference Counting
 
 2. [Symbol-First Casting and Conversion](https://fern-pl.github.io/specification/model#casts-and-conversions)
