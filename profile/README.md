@@ -9,7 +9,7 @@
   <br>
   <a href="https://github.com/fern-pl/gallinule"><img src="https://img.shields.io/badge/Gallinule-2ea45f?style=for-the-badge&logo=github" alt="Gallinule"/></a>
   <a href="https://github.com/fern-pl/fnc"><img src="https://img.shields.io/badge/FNC-orange?style=for-the-badge&logo=github" alt="FNC"/></a>
-  <a href="https://github.com/fern-pl/specification"><img src="https://img.shields.io/badge/Specification-gray?style=for-the-badge&logo=github" alt="Specification"/></a>
+  <a href="https://fern-pl.github.io/specification/"><img src="https://img.shields.io/badge/Specification-gray?style=for-the-badge&logo=github" alt="Specification"/></a>
 </p>
 
 Fern is a natively compiled, highly versatile language intended to bring together metaprogramming, performance, and ease-of-use to a happy medium.
@@ -21,9 +21,9 @@ Examples [exist](https://github.com/fern-pl/fnc/tree/main/examples) but are smal
 1. [Hybrid Memory Management](spec/model.md#memory-management)
     - Linear Reference Counting
 
-2. [Symbol-First Casting and Conversion](spec/model.md#casts-and-conversions)
-3. [UFCS (Uniform Function Call Syntax)](spec/model.md#ufcs)
-4. [CTFE (Compile-Time Function Execution)](spec/model.md#ctfe)
+2. [Symbol-First Casting and Conversion](https://fern-pl.github.io/specification/model#casts-and-conversions)
+3. [UFCS (Uniform Function Call Syntax)](https://fern-pl.github.io/specification/model#ufcs)
+4. [CTFE (Compile-Time Function Execution)](https://fern-pl.github.io/specification/model#ctfe)
 5. [Symbols and Aliases](https://fern-pl.github.io/specification/grammar#symbols-and-aliases)
 6. [Granular Attributes](https://fern-pl.github.io/specification/grammar#attributes)
 7. [Variable-Based Return](https://fern-pl.github.io/specification/grammar#functions)
@@ -32,11 +32,11 @@ Examples [exist](https://github.com/fern-pl/fnc/tree/main/examples) but are smal
 
 ## Specification
 
-1. [Model](spec/model.md)
+1. [Model](https://fern-pl.github.io/specification/model)
 
-2. [Grammar](spec/grammar.md)
-3. [Lexical](spec/lexical.md)
-4. [Metaprogramming](spec/metaprogramming.md)
+2. [Grammar](https://fern-pl.github.io/specification/grammar)
+3. [Lexical](https://fern-pl.github.io/specification/lexical)
+4. [Metaprogramming](https://fern-pl.github.io/specification/metaprogramming)
 
 Fern is planned to be able to, as well as natively compile, compile into CIL which may be interpreted directly as if Fern were C# and the standard library is likely to incorporate a more fully fleshed out rendition of [Godwit](https://github.com/cetio/godwit) to enable full seamless integration and interop with .NET languages.
 
