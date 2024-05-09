@@ -1,9 +1,11 @@
 # We need to clone each repo to get the stats we need, the github api is not good enough
 
 import os
+import pytz
 import subprocess
 import requests
 import tempfile
+from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 
 realDir = os.path.dirname(os.path.realpath(__file__))
@@ -73,10 +75,13 @@ def api_stats_by_repo(org, repo):
     results = {k:v.result() for k, v in futures.items()}
     codeSize = sum(v for k, v in results["langs"].items())
 
+    print(results["main"]["updated_at"])
+    dt = datetime.strptime(results["main"]["updated_at"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=pytz.utc)
     return {
         "codeSize": codeSize,
         "repoSize": results["main"]["size"]*1024,
-        "stars": results["main"]["stargazers_count"]
+        "stars": results["main"]["stargazers_count"],
+        "lastMod":  dt
     }
 def main():
     repos = [
@@ -89,7 +94,8 @@ def main():
         "commits": 0,
         "codeSize": 0,
         "repoSize": 0,
-        "stars": 0
+        "stars": 0,
+        "lastMod": None
     }
     for repo in repos:
         lines, commits = size_stats_by_repo(*repo)
@@ -98,14 +104,32 @@ def main():
 
         stats = api_stats_by_repo(*repo)
         for k, v in stats.items():
-            data[k]=v + (data[k] | 0)
+            if k != "lastMod":
+                data[k]=v + (data[k] | 0)
+        if data["lastMod"] is None:
+            data["lastMod"] = stats["lastMod"]
+        else:
+            data["lastMod"] = max(data["lastMod"], stats["lastMod"])
 
     os.chdir(realDir)
+
+    est_timezone = pytz.timezone('America/New_York')
+    est_time = data["lastMod"].astimezone(est_timezone)
+
+    # Format the EST time
+    est_time_str = est_time.strftime("%m/%d/%Y_%I:%M:%S_%p_%Z")
+
+
     os.system(f"curl \"https://img.shields.io/badge/Total_Stars-{data['stars']}-gold\" > output/stars.svg")
     os.system(f"curl \"https://img.shields.io/badge/Total_Lines-{data['lines']}-blue\" > output/lines.svg")
     os.system(f"curl \"https://img.shields.io/badge/Total_Commits-{data['commits']}-blue\" > output/commits.svg")
     os.system(f"curl \"https://img.shields.io/badge/Total_Code_Size-{bytes_to_human_readable(data['codeSize'])}-blue\" > output/codeSize.svg")
     os.system(f"curl \"https://img.shields.io/badge/Total_Repo_Size-{bytes_to_human_readable(data['repoSize'])}-blue\" > output/repoSize.svg")
+    os.system(f"curl \"https://img.shields.io/badge/Latest_Commit-{str(est_time_str)}-blue\" > output/lastMod.svg")
+
+
+
+    print(est_time_str)
 
 
 
