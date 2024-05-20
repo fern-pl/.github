@@ -88,6 +88,8 @@ def main():
         ["fern-pl", "fnc"],
         ["fern-pl", "gallinule"], 
         ["fern-pl", "specification"],
+        ["fern-pl", "standard-library"],
+        ["fern-pl", "runtime"],
     ]
     data = {
         "lines": 0,
